@@ -1,0 +1,53 @@
+$ java -cp <build> SalesReport
+Reports match byte-for-byte:
+north.txt,425
+south.txt,500
+Manual log: broken.txt:2 invalid sale: INVALID
+Manual after failure: 1 open reader(s), 0 open writer(s)
+Try-with-resources log: broken.txt:2 invalid sale: INVALID
+Try-with-resources after failure: 0 open reader(s), 0 open writer(s)
+
+$ jdb -classpath <build> SalesReport
+Initializing jdb ...
+> Deferring breakpoint SalesReport:57.
+It will be set after the class is loaded.
+> run SalesReport
+Set uncaught java.lang.Throwable
+Set deferred uncaught java.lang.Throwable
+> 
+VM Started: Set deferred breakpoint SalesReport:57
+
+Breakpoint hit: "thread=main", SalesReport.manual(), line=57 bci=49
+
+main[1] > 
+Breakpoint hit: "thread=main", SalesReport.manual(), line=57 bci=49
+
+main[1] > Reports match byte-for-byte:
+north.txt,425
+south.txt,500
+
+Breakpoint hit: "thread=main", SalesReport.manual(), line=57 bci=49
+
+main[1] > 
+Breakpoint hit: "thread=main", SalesReport.manual(), line=57 bci=49
+
+main[1] Method arguments:
+files = instance of java.util.ImmutableCollections$List12(id=922)
+output = instance of sun.nio.fs.WindowsPath(id=923)
+Local variables:
+writer = instance of SalesReport$TrackedWriter(id=924)
+file = instance of sun.nio.fs.WindowsPath(id=925)
+reader = instance of SalesReport$TrackedReader(id=926)
+main[1]  SalesReport.openReaders.size() = 1
+main[1] > 
+Step completed: "thread=main", SalesReport.total(), line=32 bci=0
+
+main[1]   [1] SalesReport.total (SalesReport.java:32)
+  [2] SalesReport.manual (SalesReport.java:57)
+  [3] SalesReport.failure (SalesReport.java:81)
+  [4] SalesReport.main (SalesReport.java:107)
+main[1] Removed: breakpoint SalesReport:57
+main[1] > Manual log: broken.txt:2 invalid sale: INVALID
+Manual after failure: 1 open reader(s), 0 open writer(s)
+Try-with-resources log: broken.txt:2 invalid sale: INVALID
+Try-with-resources after failure: 0 open reader(s), 0 open writer(s)
