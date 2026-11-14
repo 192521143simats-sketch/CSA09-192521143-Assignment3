@@ -1,0 +1,27 @@
+$ java -cp <build> ExamPortal
+Valid: submission accepted
+Closed: The exam window is closed.
+Unregistered: You are not registered for this course.
+Oversized: The answer file exceeds 500 KB.
+Chained failure: Could not save your answer. Please retry.
+getCause(): java.io.IOException: Storage volume unavailable
+SubmissionStorageException: Could not save your answer. Please retry.
+	at ExamPortal.store(ExamPortal.java:19)
+	at ExamPortal.submit(ExamPortal.java:27)
+	at ExamPortal.handle(ExamPortal.java:34)
+	at ExamPortal.main(ExamPortal.java:50)
+Caused by: java.io.IOException: Storage volume unavailable
+	at ExamPortal.store(ExamPortal.java:16)
+	... 3 more
+Cause discarded: Could not save your answer. Please retry.
+getCause(): null
+SubmissionStorageException: Could not save your answer. Please retry.
+	at ExamPortal.store(ExamPortal.java:19)
+	at ExamPortal.submit(ExamPortal.java:27)
+	at ExamPortal.handle(ExamPortal.java:34)
+	at ExamPortal.main(ExamPortal.java:51)
+
+$ java -cp <build> StorageDemo
+Saved answer01.pdf
+Error: Could not store answer02.pdf
+Cause: Disk quota exceeded
