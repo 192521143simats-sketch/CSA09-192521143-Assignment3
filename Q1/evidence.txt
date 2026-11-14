@@ -1,0 +1,54 @@
+$ java -cp <build> Atm  [stdin: 192521143 500]
+Enter account number and withdrawal amount:
+Dispensed 500. Remaining balance: 4500
+finally: session closed
+
+$ java -cp <build> Atm  [stdin: letters 500]
+Enter account number and withdrawal amount:
+NumberFormatException: enter whole numbers in integer range
+finally: session closed
+
+$ java -cp <build> Atm  [stdin: 192521143 letters]
+Enter account number and withdrawal amount:
+NumberFormatException: enter whole numbers in integer range
+finally: session closed
+
+$ java -cp <build> Atm  [stdin: 192521143 -250]
+Enter account number and withdrawal amount:
+IllegalArgumentException: Amount must be positive
+finally: session closed
+
+$ java -cp <build> Atm  [stdin: 192521143 6000]
+Enter account number and withdrawal amount:
+InsufficientFunds: Withdrawal exceeds balance
+finally: session closed
+
+$ java -cp <build> Atm  [stdin: 12345 100]
+Enter account number and withdrawal amount:
+IllegalArgumentException: Account does not match card
+finally: session closed
+
+$ java -cp <build> Atm  [stdin: 192521143]
+Enter account number and withdrawal amount:
+IllegalArgumentException: Amount is required
+finally: session closed
+
+$ java -cp <build> Atm missing-card.txt
+NoSuchFileException: missing-card.txt
+finally: session closed
+
+$ java -cp <build> Atm card.txt uncaught  [stdin: abc 10]
+Enter account number and withdrawal amount:
+finally: session closed
+Exception in thread "main" java.lang.NumberFormatException: For input string: "abc"
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
+	at java.base/java.lang.Integer.parseInt(Integer.java:662)
+	at java.base/java.lang.Integer.parseInt(Integer.java:778)
+	at Atm.withdraw(Atm.java:14)
+	at Atm.main(Atm.java:28)
+
+$ javac BroadFirst.java
+BroadFirst.java:1: error: exception NumberFormatException has already been caught
+class BroadFirst { void test(String s) { try { Integer.parseInt(s); } catch (Exception e) {} catch (NumberFormatException e) {} } }
+                                                                                             ^
+1 error
