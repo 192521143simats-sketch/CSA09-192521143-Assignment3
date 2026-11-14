@@ -1,0 +1,24 @@
+$ java -cp <build> ResultProcessor
+Result[id=1, status=OK, detail=70.00 PASS]
+Result[id=2, status=OK, detail=40.00 FAIL]
+Result[id=3, status=CORRUPT, detail=java.lang.NumberFormatException: For input string: "oops"]
+Result[id=4, status=MISSING, detail=4.txt]
+Result[id=5, status=CORRUPT, detail=java.lang.IllegalArgumentException: Mark out of range]
+Hand-checked set: {CORRUPT=2, MISSING=1, OK=2}
+Trial | Threads | Time (ms) | Summary
+    1 |       1 |  1055.444 | {CORRUPT=100, MISSING=100, OK=9800}
+    1 |       2 |   608.431 | {CORRUPT=100, MISSING=100, OK=9800}
+    1 |       4 |   292.353 | {CORRUPT=100, MISSING=100, OK=9800}
+    1 |       8 |   264.836 | {CORRUPT=100, MISSING=100, OK=9800}
+    2 |       2 |   542.205 | {CORRUPT=100, MISSING=100, OK=9800}
+    2 |       4 |   291.210 | {CORRUPT=100, MISSING=100, OK=9800}
+    2 |       8 |   286.682 | {CORRUPT=100, MISSING=100, OK=9800}
+    2 |       1 |  1008.715 | {CORRUPT=100, MISSING=100, OK=9800}
+    3 |       4 |   300.552 | {CORRUPT=100, MISSING=100, OK=9800}
+    3 |       8 |   267.882 | {CORRUPT=100, MISSING=100, OK=9800}
+    3 |       1 |  1030.678 | {CORRUPT=100, MISSING=100, OK=9800}
+    3 |       2 |   435.764 | {CORRUPT=100, MISSING=100, OK=9800}
+    4 |       8 |   406.549 | {CORRUPT=100, MISSING=100, OK=9800}
+    4 |       1 |  1247.673 | {CORRUPT=100, MISSING=100, OK=9800}
+    4 |       2 |   473.028 | {CORRUPT=100, MISSING=100, OK=9800}
+    4 |       4 |   312.096 | {CORRUPT=100, MISSING=100, OK=9800}
