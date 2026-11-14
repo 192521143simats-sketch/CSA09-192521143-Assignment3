@@ -1,0 +1,25 @@
+$ java -cp <build> TokenCounter
+Sum of tokens collected: 210 (expected 210)
+
+$ java -cp <build> Coordination
+wallet-1-to-2 BLOCKED waiting for wallet-2-to-1
+wallet-2-to-1 BLOCKED waiting for wallet-1-to-2
+Ordered transfers complete. Balances: 100 and 100
+notifyAll: completed, delivered=20, sizes=[0, 1, 2, 3, 4, 5, 4, 5, 4, 5, 4, 3, 2, 1, 0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 2, 1, 2, 3, 4, 5, 4, 5, 4, 3, 4, 3, 2, 3, 2, 3, 2, 1, 2, 3, 2, 1, 0]
+notify: completed, delivered=20, sizes=[0, 1, 2, 3, 4, 5, 4, 3, 4, 3, 4, 3, 4, 3, 4, 5, 4, 3, 2, 1, 0, 1, 2, 3, 4, 5, 4, 3, 4, 5, 4, 3, 2, 1, 0, 1, 2, 3, 4, 5, 4, 3, 2, 3, 2, 1, 0]
+notify: completed, delivered=20, sizes=[0, 1, 2, 3, 4, 5, 4, 5, 4, 3, 2, 1, 0, 1, 2, 3, 4, 5, 4, 5, 4, 5, 4, 5, 4, 5, 4, 3, 4, 5, 4, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 1, 0]
+notify: completed, delivered=20, sizes=[0, 1, 2, 3, 4, 5, 4, 3, 4, 3, 4, 3, 4, 5, 4, 3, 2, 1, 0, 1, 2, 3, 2, 3, 4, 5, 4, 3, 2, 1, 0, 1, 2, 3, 4, 5, 4, 3, 4, 3, 4, 3, 4, 3, 2, 1, 0]
+
+$ java -cp <build> TokenCounterIf  [12 independent JVM runs]
+01 Sum of tokens collected: 210 (expected 210)
+02 Sum of tokens collected: 190 (expected 210)
+03 Sum of tokens collected: 210 (expected 210)
+04 Sum of tokens collected: 210 (expected 210)
+05 Sum of tokens collected: 210 (expected 210)
+06 Sum of tokens collected: 210 (expected 210)
+07 Sum of tokens collected: 210 (expected 210)
+08 Sum of tokens collected: 210 (expected 210)
+09 Sum of tokens collected: 210 (expected 210)
+10 Sum of tokens collected: 210 (expected 210)
+11 Sum of tokens collected: 12 (expected 210)
+12 Sum of tokens collected: 210 (expected 210)
